@@ -15,7 +15,6 @@
 <img src="https://img.shields.io/github/last-commit/fuyugi-ls/roblox-luau?style=plastic&color=red&label=LAST+UPDATE" alt="Last Commit">
 <img src="https://img.shields.io/github/languages/top/fuyugi-ls/roblox-luau?style=plastic&color=orange" alt="Language">
 <img src="https://img.shields.io/github/repo-size/fuyugi-ls/roblox-luau?style=plastic&color=yellow&label=SIZE" alt="Repo Size">
-<img src="https://img.shields.io/badge/STYLE-OLD_SCHOOL-blue?style=plastic" alt="Style">
 </p>
 
 </div>
