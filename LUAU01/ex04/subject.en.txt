@@ -1,0 +1,56 @@
+Ex04: objectToString
+Turn-in directory : game.ReplicatedStorage.ex04
+Files to turn in : objectToString (ModuleScript)
+Allowed functions : error, FindFirstChild, string library, pairs (only if necessary), type/typeof
+--------------------------------------------------------------------------------
+
+Create a ModuleScript named objectToString inside the specified directory.
+The module must return a function that takes an Instance 'obj' as a parameter
+and returns its full path as a string (e.g., "game.Workspace.Part").
+
+This string must be compatible with the format used in 'stringToObject' (Ex03).
+
+Rules:
+- You must use ONLY 'while' loops for iteration. 'for' and 'repeat' are strictly FORBIDDEN.
+- You must NOT use the Dot Operator ('.') to access properties or children (e.g., 'obj.Name', 'obj.Parent' are BANNED).
+  You must use string indexing (e.g., obj["Name"]) instead.
+- You are FORBIDDEN from using the ':GetFullName()' method.
+- You are REQUIRED to use ':FindFirstChild()' at least once in your code (e.g., to verify the object exists inside its parent).
+- If an error occurs during execution, or if the input is invalid, the function must return nil (do not stop the script).
+
+Prototype:
+return function(obj)
+end
+
+Example:
+$>
+local objectToString = require(game.ReplicatedStorage.ex04.objectToString)
+
+local part = game.Workspace:FindFirstChild("Baseplate")
+print(objectToString(part))
+
+Output:
+[23:45:00.100] game.Workspace.Baseplate - Server - objectToString:5
+
+$>
+-- Testing with the script itself
+print(objectToString(script))
+
+Output:
+[23:45:00.105] game.ReplicatedStorage.ex04.objectToString - Server - objectToString:10
+
+$>
+-- Top level
+print(objectToString(game))
+
+Output:
+[23:45:00.110] game - Server - objectToString:14
+
+$>
+-- Invalid inputs (Should return nil, not error)
+print(objectToString(nil))
+print(objectToString({}))
+
+Output:
+[23:45:00.115] nil - Server - objectToString:18
+[23:45:00.116] nil - Server - objectToString:19

@@ -1,0 +1,56 @@
+Ex03: stringToObject
+ไดเรกทอรีสำหรับส่งงาน : game.ReplicatedStorage.ex03
+ไฟล์ที่ต้องส่ง : stringToObject (ModuleScript)
+ฟังก์ชันที่อนุญาตให้ใช้ : pairs, ipairs, string library, GetChildren
+--------------------------------------------------------------------------------
+
+จงสร้าง ModuleScript ชื่อ stringToObject ไว้ภายในไดเรกทอรีที่ระบุ
+Module ดังกล่าวต้อง return ฟังก์ชันที่รับ string 'path' เป็นพารามิเตอร์
+และ return Instance ที่ตรงกับ path นั้นกลับมา
+
+ตัวแปร 'path' จะระบุที่อยู่เต็มของออบเจกต์ (เช่น "game.Workspace.Part")
+คุณต้องทำการไต่ระดับ (Traverse) โดยเริ่มจาก 'game' (DataModel) ลงไปจนถึงออบเจกต์เป้าหมาย
+
+กฎข้อบังคับ:
+- ห้ามใช้ ':FindFirstChild()', การเข้าถึงด้วยจุด (เช่น obj.Part) หรือการเข้าถึงแบบ Key (เช่น obj["Part"])
+- คุณต้องใช้ ':GetChildren()' และวนลูปหาชื่อที่ตรงกันในแต่ละชั้นเองเท่านั้น
+- หากหาออบเจกต์ไม่เจอ หรือ path ผิดพลาด ให้ return nil
+- ฟังก์ชันต้องห้าม Error ในทุกกรณี (เช่น ถ้า input เป็น nil หรือไม่ใช่ string ให้ return nil เงียบๆ)
+- รองรับ path ที่ขึ้นต้นด้วย "game." หรือขึ้นต้นด้วยชื่อ Service เลยก็ได้
+
+ต้นแบบ:
+return function(path)
+end
+
+ตัวอย่าง:
+$>
+local stringToObject = require(game.ReplicatedStorage.ex03.stringToObject)
+
+-- สมมติว่ามี 'game.ReplicatedStorage.ex01.boatPrint' อยู่จริง
+local obj = stringToObject("game.ReplicatedStorage.ex01.boatPrint")
+print(obj)
+
+ผลลัพธ์:
+[23:15:00.100] boatPrint - Server - stringToObject:5
+
+$>
+print(stringToObject("game.Workspace"))
+
+ผลลัพธ์:
+[23:15:00.105] Workspace - Server - stringToObject:8
+
+$>
+-- 'Nothing' ไม่มีอยู่จริง
+print(stringToObject("game.Workspace.Nothing"))
+
+ผลลัพธ์:
+[23:15:00.110] nil - Server - stringToObject:12
+
+$>
+-- Input ที่ไม่ถูกต้อง
+print(stringToObject(nil))
+print(stringToObject(123))
+
+ผลลัพธ์:
+[23:15:00.115] nil - Server - stringToObject:16
+[23:15:00.116] nil - Server - stringToObject:17

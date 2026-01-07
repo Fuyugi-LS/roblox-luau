@@ -1,0 +1,65 @@
+Ex02: lstObject
+ไดเรกทอรีสำหรับส่งงาน : game.ReplicatedStorage.ex02
+ไฟล์ที่ต้องส่ง : lstObject (ModuleScript)
+ฟังก์ชันที่อนุญาตให้ใช้ : print, error, pairs, ipairs, GetChildren
+--------------------------------------------------------------------------------
+
+จงสร้าง ModuleScript ชื่อ lstObject ไว้ภายในไดเรกทอรีที่ระบุ
+Module ดังกล่าวต้อง return ฟังก์ชันที่รับ Service (Instance) เป็นพารามิเตอร์
+
+ฟังก์ชันนี้จะต้องสั่ง print "ชื่อ" (Name) ของออบเจกต์ทุกชิ้นที่อยู่ใน Service นั้น
+รวมถึงออบเจกต์ที่ซ้อนอยู่ในออบเจกต์อื่นด้วย (Descendants)
+
+Service ที่อนุญาตให้ใช้งานได้มีดังนี้:
+- Workspace
+- Players
+- Lighting
+- MaterialService
+- ReplicatedFirst
+- ReplicatedStorage
+- ServerScriptService
+- ServerStorage
+- StarterGui
+- StarterPack
+- StarterPlayer
+- Teams
+- SoundService
+- TextChatService
+
+กฎข้อบังคับ:
+- ห้ามใช้เมธอด ':GetDescendants()' โดยเด็ดขาด คุณต้องเขียนลูปเพื่อเจาะเข้าไปในลำดับชั้นด้วยตัวเอง
+- หาก 'service' ที่ส่งเข้ามาไม่อยู่ในรายชื่อข้างต้น ให้สั่ง error ด้วยข้อความ "Unsupported service."
+- ลำดับการแสดงผลไม่สำคัญ ขอแค่แสดงรายชื่อออบเจกต์ให้ครบทุกตัว
+
+ต้นแบบ:
+return function(service)
+end
+
+ตัวอย่าง:
+$>
+-- การตั้งค่า:
+-- ReplicatedStorage มี Folder ชื่อ "Utils"
+-- ข้างใน "Utils" มี Script ชื่อ "Core"
+-- ข้างใน "Core" มี NumberValue ชื่อ "Version"
+
+local lstObject = require(game.ReplicatedStorage.ex02.lstObject)
+lstObject(game.ReplicatedStorage)
+
+ผลลัพธ์:
+[23:05:10.100] ex01 - Server - lstObject:12
+[23:05:10.101] boatPrint - Server - lstObject:12
+[23:05:10.101] ex02 - Server - lstObject:12
+[23:05:10.102] lstObject - Server - lstObject:12
+[23:05:10.102] Utils - Server - lstObject:12
+[23:05:10.103] Core - Server - lstObject:12
+[23:05:10.103] Version - Server - lstObject:12
+
+$>
+lstObject(game.HttpService)
+
+ผลลัพธ์:
+[23:05:10.200] Unsupported service. - Server - lstObject:4
+Stack Begin
+Script 'game.ReplicatedStorage.ex02.lstObject', Line 4
+Script 'ServerScriptService.TestScript', Line 8
+Stack End

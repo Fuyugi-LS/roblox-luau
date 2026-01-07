@@ -1,0 +1,67 @@
+Ex05: lenTable
+Turn-in directory : game.ReplicatedStorage.ex05
+Files to turn in : lenTable (ModuleScript)
+Allowed functions : pairs, next, error, type, typeof
+--------------------------------------------------------------------------------
+
+Create a ModuleScript named lenTable inside the specified directory.
+The module must return a function that takes a table 't' as a parameter.
+
+The function must return the total number of elements inside the table.
+It must work correctly for:
+- Arrays (Numerical indexes)
+- Dictionaries (String/Object keys)
+- Mixed tables (Both array and dictionary parts)
+- Empty tables (Must return 0)
+
+Rules:
+- If the input 't' is not a table, the function must throw an error with the message "not a table".
+- You cannot rely solely on the '#' operator, as it does not count dictionary keys.
+
+Prototype:
+return function(t)
+end
+
+Example:
+$>
+local lenTable = require(game.ReplicatedStorage.ex05.lenTable)
+
+-- Array
+print(lenTable({10, 20, 30, 40}))
+
+Output:
+[23:55:00.100] 4 - Server - lenTable:5
+
+$>
+-- Dictionary
+print(lenTable({Name = "Boat", Job = "Scripter"}))
+
+Output:
+[23:55:00.105] 2 - Server - lenTable:8
+
+$>
+-- Mixed (Array + Dictionary)
+local mixed = {1, 2, Key = "Value", 3} 
+-- Note: Lua sees indices 1, 2, 3 and key "Key" -> Total 4
+print(lenTable(mixed))
+
+Output:
+[23:55:00.110] 4 - Server - lenTable:12
+
+$>
+-- Empty
+print(lenTable({}))
+
+Output:
+[23:55:00.115] 0 - Server - lenTable:15
+
+$>
+-- Error Case
+lenTable("Not a table")
+
+Output:
+[23:55:00.120] not a table - Server - lenTable:18
+Stack Begin
+Script 'game.ReplicatedStorage.ex05.lenTable', Line 18
+Script 'ServerScriptService.TestScript', Line 20
+Stack End

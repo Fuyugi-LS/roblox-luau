@@ -1,0 +1,65 @@
+Ex02: lstObject
+Turn-in directory : game.ReplicatedStorage.ex02
+Files to turn in : lstObject (ModuleScript)
+Allowed functions : print, error, pairs, ipairs, GetChildren
+--------------------------------------------------------------------------------
+
+Create a ModuleScript named lstObject inside the specified directory.
+The module must return a function that takes a Service (Instance) as a parameter.
+
+The function must print the Name of every object inside that service,
+including objects inside other objects (descendants).
+
+Valid Services are:
+- Workspace
+- Players
+- Lighting
+- MaterialService
+- ReplicatedFirst
+- ReplicatedStorage
+- ServerScriptService
+- ServerStorage
+- StarterGui
+- StarterPack
+- StarterPlayer
+- Teams
+- SoundService
+- TextChatService
+
+Rules:
+- You must NOT use the method ':GetDescendants()'. You must implement the traversal loop yourself.
+- If the passed 'service' is not in the valid list, throw an error with the message "Unsupported service.".
+- The order of printing does not matter, as long as all objects are listed.
+
+Prototype:
+return function(service)
+end
+
+Example:
+$>
+-- Setup:
+-- ReplicatedStorage contains a Folder named "Utils"
+-- Inside "Utils", there is a Script named "Core"
+-- Inside "Core", there is a NumberValue named "Version"
+
+local lstObject = require(game.ReplicatedStorage.ex02.lstObject)
+lstObject(game.ReplicatedStorage)
+
+Output:
+[23:05:10.100] ex01 - Server - lstObject:12
+[23:05:10.101] boatPrint - Server - lstObject:12
+[23:05:10.101] ex02 - Server - lstObject:12
+[23:05:10.102] lstObject - Server - lstObject:12
+[23:05:10.102] Utils - Server - lstObject:12
+[23:05:10.103] Core - Server - lstObject:12
+[23:05:10.103] Version - Server - lstObject:12
+
+$>
+lstObject(game.HttpService)
+
+Output:
+[23:05:10.200] Unsupported service. - Server - lstObject:4
+Stack Begin
+Script 'game.ReplicatedStorage.ex02.lstObject', Line 4
+Script 'ServerScriptService.TestScript', Line 8
+Stack End

@@ -1,0 +1,62 @@
+Ex01: boatPrint
+Turn-in directory : game.ReplicatedStorage.ex01
+Files to turn in : boatPrint (ModuleScript)
+Allowed functions : print, typeof, error
+--------------------------------------------------------------------------------
+
+Create a ModuleScript named boatPrint inside the specified directory.
+The module must return a function that takes a string 's' as a parameter.
+
+The function must display the string 's' followed by " - from ScripterSchool"
+to the output window.
+
+If the parameter 's' is not a string, the function must throw an error with the message "Invalid type.".
+
+Prototype:
+return function(s)
+end
+
+Example:
+$>
+-- Assuming the test script is 'ServerScriptService.TestScript'
+local boatPrint = require(game.ReplicatedStorage.ex01.boatPrint)
+boatPrint("Main")
+
+Output:
+[22:54:07.100] Main - from ScripterSchool - Server - boatPrint:4
+
+$>
+boatPrint("Test")
+
+Output:
+[22:54:07.105] Test - from ScripterSchool - Server - boatPrint:4
+
+$>
+boatPrint(123)
+
+Output:
+[22:54:07.200] Invalid type. - Server - boatPrint:8
+Stack Begin
+Script 'game.ReplicatedStorage.ex01.boatPrint', Line 8
+Script 'ServerScriptService.TestScript', Line 10
+Stack End
+
+$>
+boatPrint(nil)
+
+Output:
+[22:54:07.205] Invalid type. - Server - boatPrint:8
+Stack Begin
+Script 'game.ReplicatedStorage.ex01.boatPrint', Line 8
+Script 'ServerScriptService.TestScript', Line 15
+Stack End
+
+$>
+boatPrint({})
+
+Output:
+[22:54:07.210] Invalid type. - Server - boatPrint:8
+Stack Begin
+Script 'game.ReplicatedStorage.ex01.boatPrint', Line 8
+Script 'ServerScriptService.TestScript', Line 20
+Stack End

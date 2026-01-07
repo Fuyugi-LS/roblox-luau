@@ -1,0 +1,56 @@
+Ex04: objectToString
+ไดเรกทอรีสำหรับส่งงาน : game.ReplicatedStorage.ex04
+ไฟล์ที่ต้องส่ง : objectToString (ModuleScript)
+ฟังก์ชันที่อนุญาตให้ใช้ : error, FindFirstChild, string library, pairs (เฉพาะเท่าที่จำเป็น), type/typeof
+--------------------------------------------------------------------------------
+
+จงสร้าง ModuleScript ชื่อ objectToString ไว้ภายในไดเรกทอรีที่ระบุ
+Module ดังกล่าวต้อง return ฟังก์ชันที่รับ Instance 'obj' เป็นพารามิเตอร์
+และ return "เส้นทางเต็ม" (Full Path) ของออบเจกต์นั้นกลับมาเป็น String (เช่น "game.Workspace.Part")
+
+String ที่ได้จะต้องสามารถนำไปใช้กับฟังก์ชัน 'stringToObject' (Ex03) ได้
+
+กฎข้อบังคับ:
+- อนุญาตให้ใช้ลูป 'while' เท่านั้น ห้ามใช้ 'for' และ 'repeat' โดยเด็ดขาด
+- ห้ามใช้ Dot Operator ('.') ในการเข้าถึง Property หรือ Child (เช่น 'obj.Name', 'obj.Parent' ถือว่าผิดกฎ)
+  คุณต้องใช้วิธี Index ด้วย String แทน (เช่น obj["Name"])
+- ห้ามใช้เมธอด ':GetFullName()'
+- บังคับให้ใช้ ':FindFirstChild()' อย่างน้อย 1 ครั้งในโค้ด (เช่น ใช้เพื่อตรวจสอบว่า Object มีตัวตนอยู่จริงใน Parent)
+- หากเกิด Error ใดๆ ระหว่างทำงาน หรือ Input ไม่ถูกต้อง ฟังก์ชันต้อง return nil (ห้ามปล่อยให้สคริปต์หยุดทำงาน)
+
+ต้นแบบ:
+return function(obj)
+end
+
+ตัวอย่าง:
+$>
+local objectToString = require(game.ReplicatedStorage.ex04.objectToString)
+
+local part = game.Workspace:FindFirstChild("Baseplate")
+print(objectToString(part))
+
+ผลลัพธ์:
+[23:45:00.100] game.Workspace.Baseplate - Server - objectToString:5
+
+$>
+-- ทดสอบกับตัว Script เอง
+print(objectToString(script))
+
+ผลลัพธ์:
+[23:45:00.105] game.ReplicatedStorage.ex04.objectToString - Server - objectToString:10
+
+$>
+-- กรณี Top level
+print(objectToString(game))
+
+ผลลัพธ์:
+[23:45:00.110] game - Server - objectToString:14
+
+$>
+-- Input ที่ไม่ถูกต้อง (ต้อง return nil ไม่ใช่ error)
+print(objectToString(nil))
+print(objectToString({}))
+
+ผลลัพธ์:
+[23:45:00.115] nil - Server - objectToString:18
+[23:45:00.116] nil - Server - objectToString:19

@@ -1,0 +1,56 @@
+Ex03: stringToObject
+Turn-in directory : game.ReplicatedStorage.ex03
+Files to turn in : stringToObject (ModuleScript)
+Allowed functions : pairs, ipairs, string library, GetChildren
+--------------------------------------------------------------------------------
+
+Create a ModuleScript named stringToObject inside the specified directory.
+The module must return a function that takes a string 'path' as a parameter
+and returns the corresponding Instance.
+
+The 'path' represents the full path of an object (e.g., "game.Workspace.Part").
+You must traverse the hierarchy starting from 'game' (DataModel) down to the target object.
+
+Rules:
+- You must NOT use ':FindFirstChild()', dot notation for children (e.g. obj.Part), or dictionary access (e.g. obj["Part"]).
+- You must use ':GetChildren()' and iterate through the list to find the matching object at each step.
+- If the object is not found, or the path is broken, return nil.
+- The function must NEVER error. If the input is nil, not a string, or malformed, return nil.
+- Supports both "game.Service..." and "Service..." formats (starting implicitly from game).
+
+Prototype:
+return function(path)
+end
+
+Example:
+$>
+local stringToObject = require(game.ReplicatedStorage.ex03.stringToObject)
+
+-- Assuming 'game.ReplicatedStorage.ex01.boatPrint' exists
+local obj = stringToObject("game.ReplicatedStorage.ex01.boatPrint")
+print(obj)
+
+Output:
+[23:15:00.100] boatPrint - Server - stringToObject:5
+
+$>
+print(stringToObject("game.Workspace"))
+
+Output:
+[23:15:00.105] Workspace - Server - stringToObject:8
+
+$>
+-- 'Nothing' does not exist
+print(stringToObject("game.Workspace.Nothing"))
+
+Output:
+[23:15:00.110] nil - Server - stringToObject:12
+
+$>
+-- Invalid inputs
+print(stringToObject(nil))
+print(stringToObject(123))
+
+Output:
+[23:15:00.115] nil - Server - stringToObject:16
+[23:15:00.116] nil - Server - stringToObject:17

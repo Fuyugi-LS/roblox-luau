@@ -1,0 +1,62 @@
+Ex01: boatPrint
+ไดเรกทอรีสำหรับส่งงาน : game.ReplicatedStorage.ex01
+ไฟล์ที่ต้องส่ง : boatPrint (ModuleScript)
+ฟังก์ชันที่อนุญาตให้ใช้ : print, typeof, error
+--------------------------------------------------------------------------------
+
+จงสร้าง ModuleScript ชื่อ boatPrint ไว้ภายในไดเรกทอรีที่ระบุ
+Module ดังกล่าวต้อง return ฟังก์ชันที่รับพารามิเตอร์เป็น string ชื่อ 's'
+
+ฟังก์ชันนี้จะต้องแสดงข้อความในตัวแปร 's' ตามด้วยคำว่า " - from ScripterSchool"
+ออกไปที่หน้าต่าง output
+
+หากพารามิเตอร์ 's' ไม่ใช่ string ฟังก์ชันจะต้องสั่ง error ด้วยข้อความ "Invalid type."
+
+ต้นแบบ:
+return function(s)
+end
+
+ตัวอย่าง:
+$>
+-- สมมติว่ารันจาก 'ServerScriptService.TestScript'
+local boatPrint = require(game.ReplicatedStorage.ex01.boatPrint)
+boatPrint("Main")
+
+ผลลัพธ์:
+[22:54:07.100] Main - from ScripterSchool - Server - boatPrint:4
+
+$>
+boatPrint("Test")
+
+ผลลัพธ์:
+[22:54:07.105] Test - from ScripterSchool - Server - boatPrint:4
+
+$>
+boatPrint(123)
+
+ผลลัพธ์:
+[22:54:07.200] Invalid type. - Server - boatPrint:8
+Stack Begin
+Script 'game.ReplicatedStorage.ex01.boatPrint', Line 8
+Script 'ServerScriptService.TestScript', Line 10
+Stack End
+
+$>
+boatPrint(nil)
+
+ผลลัพธ์:
+[22:54:07.205] Invalid type. - Server - boatPrint:8
+Stack Begin
+Script 'game.ReplicatedStorage.ex01.boatPrint', Line 8
+Script 'ServerScriptService.TestScript', Line 15
+Stack End
+
+$>
+boatPrint({})
+
+ผลลัพธ์:
+[22:54:07.210] Invalid type. - Server - boatPrint:8
+Stack Begin
+Script 'game.ReplicatedStorage.ex01.boatPrint', Line 8
+Script 'ServerScriptService.TestScript', Line 20
+Stack End

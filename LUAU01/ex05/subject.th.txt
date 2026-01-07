@@ -1,0 +1,67 @@
+Ex05: lenTable
+ไดเรกทอรีสำหรับส่งงาน : game.ReplicatedStorage.ex05
+ไฟล์ที่ต้องส่ง : lenTable (ModuleScript)
+ฟังก์ชันที่อนุญาตให้ใช้ : pairs, next, error, type, typeof
+--------------------------------------------------------------------------------
+
+จงสร้าง ModuleScript ชื่อ lenTable ไว้ภายในไดเรกทอรีที่ระบุ
+Module ดังกล่าวต้อง return ฟังก์ชันที่รับตัวแปร table 't' เป็นพารามิเตอร์
+
+ฟังก์ชันนี้จะต้อง return จำนวนสมาชิกทั้งหมด (Total elements) ที่อยู่ในตาราง
+โดยจะต้องทำงานได้ถูกต้องกับ:
+- Arrays (ดัชนีเป็นตัวเลขเรียงกัน)
+- Dictionaries (คีย์เป็นข้อความหรือออบเจกต์)
+- Mixed tables (ตารางที่มีทั้งส่วน Array และ Dictionary ผสมกัน)
+- Empty tables (ตารางเปล่า ต้องได้ 0)
+
+กฎข้อบังคับ:
+- หาก 't' ที่ส่งเข้ามาไม่ใช่ table ให้สั่ง error ด้วยข้อความ "not a table"
+- ระวัง: คุณไม่สามารถพึ่งพาเครื่องหมาย '#' ได้เพียงอย่างเดียว เพราะมันไม่นับคีย์ใน Dictionary
+
+ต้นแบบ:
+return function(t)
+end
+
+ตัวอย่าง:
+$>
+local lenTable = require(game.ReplicatedStorage.ex05.lenTable)
+
+-- Array
+print(lenTable({10, 20, 30, 40}))
+
+ผลลัพธ์:
+[23:55:00.100] 4 - Server - lenTable:5
+
+$>
+-- Dictionary
+print(lenTable({Name = "Boat", Job = "Scripter"}))
+
+ผลลัพธ์:
+[23:55:00.105] 2 - Server - lenTable:8
+
+$>
+-- Mixed (Array + Dictionary)
+local mixed = {1, 2, Key = "Value", 3} 
+-- หมายเหตุ: Lua จะเห็น index 1, 2, 3 และ key "Key" -> รวมเป็น 4
+print(lenTable(mixed))
+
+ผลลัพธ์:
+[23:55:00.110] 4 - Server - lenTable:12
+
+$>
+-- Empty
+print(lenTable({}))
+
+ผลลัพธ์:
+[23:55:00.115] 0 - Server - lenTable:15
+
+$>
+-- กรณี Error
+lenTable("Not a table")
+
+ผลลัพธ์:
+[23:55:00.120] not a table - Server - lenTable:18
+Stack Begin
+Script 'game.ReplicatedStorage.ex05.lenTable', Line 18
+Script 'ServerScriptService.TestScript', Line 20
+Stack End

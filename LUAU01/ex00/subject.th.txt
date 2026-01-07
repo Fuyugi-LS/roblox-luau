@@ -1,0 +1,51 @@
+Ex00: printFooBar
+ไดเรกทอรีสำหรับส่งงาน : game.ReplicatedStorage.ex00
+ไฟล์ที่ต้องส่ง : printFooBar (ModuleScript)
+ฟังก์ชันที่อนุญาตให้ใช้ : print, type, typeof
+--------------------------------------------------------------------------------
+
+จงสร้าง ModuleScript ชื่อ printFooBar ไว้ภายในไดเรกทอรีที่ระบุ
+Module ดังกล่าวต้อง return ฟังก์ชันที่รับอาร์กิวเมนต์ 1 ตัว (เป็นข้อมูลประเภทใดก็ได้)
+
+ฟังก์ชันจะต้องตรวจสอบชนิดของข้อมูลที่ส่งเข้ามาและทำงานดังนี้:
+- หากเป็นตัวเลข (number) ให้ print คำว่า "foo"
+- หากเป็นข้อความ (string) ให้ print คำว่า "bar"
+- หากเป็นชนิดข้อมูลอื่นๆ (boolean, nil, table, instance, ฯลฯ) ให้ print คำว่า "foobar"
+
+ฟังก์ชันจะต้อง returnค่าเป็น nil เสมอ
+
+ต้นแบบ:
+return function(arg)
+end
+
+ตัวอย่าง:
+$>
+local printFooBar = require(game.ReplicatedStorage.ex00.printFooBar)
+
+-- กรณี: Number
+local ret = printFooBar(42)
+print(ret)
+
+ผลลัพธ์:
+[22:00:00.100] foo - Server - printFooBar:4
+[22:00:00.101] nil - Server - TestScript:5
+
+$>
+-- กรณี: String
+printFooBar("Hello Roblox")
+
+ผลลัพธ์:
+[22:00:00.105] bar - Server - printFooBar:6
+
+$>
+-- กรณี: อื่นๆ (Boolean, Table, Nil, Instance)
+printFooBar(true)
+printFooBar({})
+printFooBar(nil)
+printFooBar(workspace)
+
+ผลลัพธ์:
+[22:00:00.110] foobar - Server - printFooBar:10
+[22:00:00.111] foobar - Server - printFooBar:10
+[22:00:00.112] foobar - Server - printFooBar:10
+[22:00:00.113] foobar - Server - printFooBar:10

@@ -1,0 +1,51 @@
+Ex00: printFooBar
+Turn-in directory : game.ReplicatedStorage.ex00
+Files to turn in : printFooBar (ModuleScript)
+Allowed functions : print, type, typeof
+--------------------------------------------------------------------------------
+
+Create a ModuleScript named printFooBar inside the specified directory.
+The module must return a function that takes a single argument of any type.
+
+The function needs to check the type of the passed argument and behave as follows:
+- If the argument is a number, print "foo".
+- If the argument is a string, print "bar".
+- For any other type (boolean, nil, table, instance, etc.), print "foobar".
+
+The function must always return nil.
+
+Prototype:
+return function(arg)
+end
+
+Example:
+$>
+local printFooBar = require(game.ReplicatedStorage.ex00.printFooBar)
+
+-- Case: Number
+local ret = printFooBar(42)
+print(ret)
+
+Output:
+[22:00:00.100] foo - Server - printFooBar:4
+[22:00:00.101] nil - Server - TestScript:5
+
+$>
+-- Case: String
+printFooBar("Hello Roblox")
+
+Output:
+[22:00:00.105] bar - Server - printFooBar:6
+
+$>
+-- Case: Others (Boolean, Table, Nil, Instance)
+printFooBar(true)
+printFooBar({})
+printFooBar(nil)
+printFooBar(workspace)
+
+Output:
+[22:00:00.110] foobar - Server - printFooBar:10
+[22:00:00.111] foobar - Server - printFooBar:10
+[22:00:00.112] foobar - Server - printFooBar:10
+[22:00:00.113] foobar - Server - printFooBar:10
