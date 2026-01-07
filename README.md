@@ -75,7 +75,7 @@ influence and reference material:
 IV.  I N S T A L L  /  U S A G E
 ===========================================================================
 
-1. Clone the repo: git clone [https://github.com/fuyugi-ls/roblox-luau](https://github.com/fuyugi-ls/roblox-luau)
+1. Clone the repo
 2. Open .rbxl files in Roblox Studio.
 3. Read .txt files for context.
 4. Code. Break. Fix. Repeat.
