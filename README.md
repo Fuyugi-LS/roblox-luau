@@ -29,7 +29,6 @@ I.  M A N I F E S T  &  I N F O
 RELEASE DATE ....: 7:1:2026
 PLATFORM ........: ROBLOX / LUAU
 AUTHOR ..........: fuyugi-ls
-REPO ............: [https://github.com/fuyugi-ls/roblox-luau](https://github.com/fuyugi-ls/roblox-luau)
 
 [ CONTENTS ]
 > This repository is a pure archive. No executables. No bloat.
